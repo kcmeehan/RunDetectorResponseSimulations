@@ -61,6 +61,8 @@ for idx, (name, group) in enumerate(groups):
 		if Esum >= energy-1:
 			det_eta[name[1]] += 1
 
+det_eta = det_eta/Fluence
+
 det_eta_err = np.sqrt(det_eta)/Fluence
 
 # Create an output file
