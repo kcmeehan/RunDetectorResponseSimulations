@@ -55,11 +55,24 @@ eta_err = np.sqrt(n_pp)/Fluence
 
 # obtain total event energy per detector
 groups = df.groupby(['eventID', 'detID'])
+Esum_det0 = []
+Esum_det1 = []
+Esum_det2 = []
+Esum_det3 = []
+
 for idx, (name, group) in enumerate(groups):
-		Esum = np.sum(group.E)
-		# Cut on full energy peak
-		if Esum >= energy-1:
+	Esum = np.sum(group.E)
+	# Cut on full energy peak
+	if Esum >= energy-1:
 			det_eta[name[1]] += 1
+	if name[1] == 0:
+			Esum_det0.append(Esum)
+	elif name[1] == 1:
+	    Esum_det1.append(Esum)
+	elif name[1] == 2:
+	    Esum_det2.append(Esum)
+	elif name[1] == 3:
+	    Esum_det3.append(Esum)
 
 det_eta = det_eta/Fluence
 
@@ -73,3 +86,7 @@ with h5py.File(outfile,"w") as outfile:
 		dset_eta_err = outfile.create_dataset("eta_err", data=eta_err)
 		dset_eta_det = outfile.create_dataset("eta_per_det", data=det_eta)
 		dset_eta_det_err = outfile.create_dataset("eta_per_det_err", data=det_eta_err)
+		dset_E_det0 = outfile.create_dataset("spectra_0", data=Esum_det0)
+		dset_E_det1 = outfile.create_dataset("spectra_1", data=Esum_det1)
+		dset_E_det2 = outfile.create_dataset("spectra_2", data=Esum_det2)
+		dset_E_det3 = outfile.create_dataset("spectra_3", data=Esum_det3)
