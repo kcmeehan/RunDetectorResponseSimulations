@@ -1,10 +1,10 @@
 #########################################################################
 #  
-# Code to post-process azimuthal scan simulation output and obtain 
+# Code to post-process healpix scan simulation output and obtain 
 # effective areas. 
 #
 #
-# ** ASSUMES POINT SOURCE **
+# ** ASSUMES FAR FIELD SOURCE **
 #
 #########################################################################
 
@@ -13,6 +13,7 @@ import tables as tb
 import numpy as np
 import pandas as pd
 import h5py
+import healpy as hp
 import sys
 
 # Check number of arguments
@@ -20,8 +21,8 @@ if len(sys.argv) != 10:
 	print("ERROR: processSimulationOutput.py requires 9 arguments")
 
 # Read in arguments
-theta = int(sys.argv[1])
-phi = int(sys.argv[2])
+nside = int(sys.argv[1])
+pixel = int(sys.argv[2])
 Nevents = int(sys.argv[3])
 energy = int(sys.argv[4])
 source_rad = float(sys.argv[5])
@@ -30,8 +31,8 @@ nDet = int(sys.argv[7])
 infile = str(sys.argv[8])
 outfile = str(sys.argv[9])
 
-# Effective area constant
-Fluence = Nevents/((1.-np.cos(np.arctan(source_rad/source_dist)))*2*np.pi*source_dist**2)
+# Source properties
+Fluence = Nevents/(np.pi*source_rad**2)
 
 # Obtaining efficiencies
 eta = 0
@@ -43,7 +44,7 @@ with tb.open_file(infile, 'r') as file:
 		# reading the data
 		data = file.root.raw.data.read()
 		df = pd.DataFrame(data)
-		
+
 # obtain total energies of events
 total_energy = df.groupby('eventID').apply(lambda x: np.sum(x.E)) ## probably time-limiting step
 
@@ -70,11 +71,11 @@ for idx, (name, group) in enumerate(groups):
 	if name[1] == 0:
 			Esum_det0.append(Esum)
 	elif name[1] == 1:
-	    Esum_det1.append(Esum)
+			Esum_det1.append(Esum)
 	elif name[1] == 2:
-	    Esum_det2.append(Esum)
+			Esum_det2.append(Esum)
 	elif name[1] == 3:
-	    Esum_det3.append(Esum)
+			Esum_det3.append(Esum)
 
 det_eta = det_eta/Fluence
 
@@ -82,13 +83,12 @@ det_eta_err = np.sqrt(det_eta)/Fluence
 
 # Create an output file
 with h5py.File(outfile,"w") as outfile:
-		dset_index = outfile.create_dataset("theta", data=theta)
-		dset_index = outfile.create_dataset("phi", data=phi)
+		dset_index = outfile.create_dataset("pixel", data=pixel)
 		dset_eta = outfile.create_dataset("eta", data=eta)
 		dset_eta_err = outfile.create_dataset("eta_err", data=eta_err)
 		dset_eta_det = outfile.create_dataset("eta_per_det", data=det_eta)
 		dset_eta_det_err = outfile.create_dataset("eta_per_det_err", data=det_eta_err)
-		dset_E_det0 = outfile.create_dataset("spectra_0", data=Esum_det0)
-		dset_E_det1 = outfile.create_dataset("spectra_1", data=Esum_det1)
-		dset_E_det2 = outfile.create_dataset("spectra_2", data=Esum_det2)
-		dset_E_det3 = outfile.create_dataset("spectra_3", data=Esum_det3)
+    dset_E_det0 = outfile.create_dataset("spectra_0", data=Esum_det0)
+    dset_E_det1 = outfile.create_dataset("spectra_1", data=Esum_det1)
+    dset_E_det2 = outfile.create_dataset("spectra_2", data=Esum_det2)
+    dset_E_det3 = outfile.create_dataset("spectra_3", data=Esum_det3)

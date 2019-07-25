@@ -33,7 +33,7 @@ cd /global/home/users/kmeehan/Repos/geant4py/scripts/
 
 python lamp_CLLBC.py -angle $theta $phi -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/RigSims/LBE_4p0/output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV -n $nEvents -E $energy -rad $source_rad -d $source_dist
 
-#python miniprism.py -angle $theta $phi -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/output_miniprism_angle_$(($theta))_$(($phi))_$((energy))keV.h5 -n $nEvents -E $energy -rad $source_rad -d $source_dist
+#python miniprism.py -angle $theta $phi -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/output_miniprism_angle_$(($theta))_$(($phi))_$((energy))keV -n $nEvents -E $energy -rad $source_rad -d $source_dist
 
 cd /global/home/users/kmeehan/Repos/geant4py/lr_sims/Angles/
 
