@@ -37,7 +37,7 @@ python lamp_CLLBC.py -healpix $nside $pixel -out /global/home/users/kmeehan/SCRA
 
 cd /global/home/users/kmeehan/Repos/geant4py/lr_sims/Healpix/
 
-python processSimulationOutput.py $nside $pixel $nEvents $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/cllbc_lamp/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/cllbc_lamp/processed_output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5
+python processSimulationOutput.py $nside $pixel $nEvents $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/cllbc_lamp/output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/cllbc_lamp/processed_output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV.h5
 
 #python processSimulationOutput.py $nside $pixel $nEvents $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/mp/processed_output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5
 
