@@ -10,14 +10,15 @@ energies = [59, 662]
 source_rad = 61
 source_dist = 107
 nDet = 192
+field = 'far'
 
 filename = "Tasklists/nf_tasklist_first_mp_rig_scan_"+str(nEvents)+".txt"
 
 with open(filename, "w") as file:
 	for i in range(0, len(phi_Cs)):
 		file.write("cd /global/home/users/kmeehan/Repos/nf_geant4py/lr_sims/Angles/ && ./run_nf_simulation_angles_batch.sh " \
-				+ str(int(theta)) + " " + str(phi_Cs[i]) + " " + str(nEvents) + " " + str(energies[1]) + " " + str(source_rad) + " " + str(source_dist) + " " + str(nDet) + "\n")
+				+ str(int(theta)) + " " + str(phi_Cs[i]) + " " + str(nEvents) + " " + str(energies[1]) + " " + str(source_rad) + " " + str(source_dist) + " " + str(nDet) + " " + field + "\n")
 
 	for i in range(0, len(phi_Am)):		
 		file.write("cd /global/home/users/kmeehan/Repos/nf_geant4py/lr_sims/Angles/ && ./run_nf_simulation_angles_batch.sh " \
-				+ str(int(theta)) + " " + str(phi_Am[i]) + " " + str(nEvents) + " " + str(energies[0]) + " " + str(source_rad) + " " + str(source_dist) + " " + str(nDet) + "\n")
+				+ str(int(theta)) + " " + str(phi_Am[i]) + " " + str(nEvents) + " " + str(energies[0]) + " " + str(source_rad) + " " + str(source_dist) + " " + str(nDet) + " " + field + "\n")
