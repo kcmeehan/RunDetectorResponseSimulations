@@ -1,0 +1,1 @@
+cd /global/home/users/kmeehan/Repos/geant4py/lr_sims/Healpix/ && ./combinempfiles.sh

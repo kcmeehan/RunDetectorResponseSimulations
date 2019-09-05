@@ -10,9 +10,10 @@ nside = 16
 npix = hp.nside2npix(nside)
 pix = range(0, npix)
 source_energies=[59, 186, 356, 662, 1332]
+#source_energies=[356, 662, 1332]
 nDet=4
 detector='lamp_cllbc'
-file_prefix='/global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside16/cllbc_lamp/processed_output_nside'+str(nside)+'_'+detector+'_'
+file_prefix='/global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside16/cllbc_lamp/geom_v2/processed_output_nside'+str(nside)+'_'+detector+'_'
 
 for energy in source_energies:
 	# Create data containers

@@ -4,8 +4,8 @@ import healpy as hp
 # Choose angles and other parameters
 nside=16
 npix = hp.nside2npix(nside)
-nEvents = 10000000
-energies = [10, 50, 100, 150, 200]
+nEvents = 20000000
+energies = [250, 300, 350]
 source_rad = 61
 source_dist = 107
 nDet = 192

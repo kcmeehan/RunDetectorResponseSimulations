@@ -1,3 +1,5 @@
 *.log.*
 *.h5
 *.out
+Angles/Tasklists/*
+Angles/finish_angles.sh
