@@ -24,15 +24,19 @@ if len(sys.argv) != 10:
 nside = int(sys.argv[1])
 pixel = int(sys.argv[2])
 Nevents = int(sys.argv[3])
-energy = int(sys.argv[4])
-source_rad = float(sys.argv[5])
-source_dist = float(sys.argv[6])
-nDet = int(sys.argv[7])
-infile = str(sys.argv[8])
-outfile = str(sys.argv[9])
+field = int(sys.argv[4])
+energy = int(sys.argv[5])
+source_rad = float(sys.argv[6])
+source_dist = float(sys.argv[7])
+nDet = int(sys.argv[8])
+infile = str(sys.argv[9])
+outfile = str(sys.argv[10])
 
 # Source properties
-Fluence = Nevents/(np.pi*source_rad**2)
+if field == 'far':
+	Fluence = Nevents/(np.pi*source_rad*source_rad)	
+elif field == 'near':
+	Fluence = Nevents/((1.-np.cos(np.arctan(source_rad/source_dist)))*2*np.pi*source_dist**2)
 
 # Obtaining efficiencies
 eta = 0

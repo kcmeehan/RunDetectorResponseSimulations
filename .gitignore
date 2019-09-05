@@ -1,5 +1,7 @@
 *.log.*
 *.h5
 *.out
+*.task.*
+*.host*
 Angles/Tasklists/*
 Angles/finish_angles.sh

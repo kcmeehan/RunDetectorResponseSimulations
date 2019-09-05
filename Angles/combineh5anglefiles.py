@@ -14,7 +14,7 @@ phi=np.arange(0, 360, 15)
 source_energies=[59, 662]
 nDet=4
 detector='lamp_cllbc'
-file_prefix='/global/home/users/kmeehan/SCRATCH/ProcessedOutput/RigSims/TrackEle/processed_output_'+detector+'_angle_'+str(theta)+'_'
+file_prefix='/global/home/users/kmeehan/SCRATCH/ProcessedOutput/RigSims/QGSP_BERT_HP/processed_output_'+detector+'_angle_'+str(theta)+'_'
 
 nAngles=len(phi)
 
@@ -35,7 +35,7 @@ for energy in source_energies:
 					eta_det_err[i] = file.root.eta_per_det_err.read()
 
 	# Save final data to a single output file
-	outfile='trackEle_combined_output_'+detector+'_'+str(energy)+'keV_angles.h5'
+	outfile='qgsp_bert_hp_combined_output_'+detector+'_'+str(energy)+'keV_angles.h5'
 	with h5py.File(outfile,"w") as outfile:
 			outfile.create_dataset("theta", data=theta)
 			outfile.create_dataset("phi", data=phi)
