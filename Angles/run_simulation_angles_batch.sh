@@ -32,8 +32,8 @@ conda activate geant4py_km
 
 cd /global/home/users/kmeehan/Repos/geant4py/scripts/
 
-python lamp_CLLBC.py -field $field -angle $theta $phi -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/RigSims/ActualFarField/output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV -n $nEvents -E $energy -rad $source_rad -d $source_dist
+python lamp_CLLBC.py -field $field -angle $theta $phi -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/RigSims/TrackSecondaries/output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV -n $nEvents -E $energy -rad $source_rad -d $source_dist
 
 cd /global/home/users/kmeehan/Repos/geant4py/lr_sims/Angles/
 
-python processAngleSimulationOutput.py $theta $phi $nEvents $field $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/RigSims/ActualFarField/output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/RigSims/ActualFarField/processed_output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV.h5
+python processAngleSimulationOutput.py $theta $phi $nEvents $field $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/RigSims/TrackSecondaries/output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/RigSims/TrackSecondaries/processed_output_lamp_cllbc_angle_$(($theta))_$(($phi))_$((energy))keV.h5

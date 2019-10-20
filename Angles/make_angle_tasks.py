@@ -4,13 +4,14 @@ import numpy as np
 theta=90
 phi = np.arange(0, 360, 15)
 nEvents = 100000000
-energies = [59, 662, 1332]
+#energies = [59, 662, 1332]
+energies = [1332]
 source_rad = 61
 source_dist = 107
 nDet = 4
-field = 'far'
+field = 'near'
 
-filename = "Tasklists/actual_ff_tasklist_cllbc_azim_scan"+str(nEvents)+".txt"
+filename = "Tasklists/finish_running.txt"
 
 with open(filename, "w") as file:
 	for energy in energies:

@@ -32,13 +32,8 @@ conda activate geant4py_km
 
 cd /global/home/users/kmeehan/Repos/geant4py/scripts/
 
-python lamp_CLLBC.py -field $field -healpix $nside $pixel -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/cllbc_lamp/geom_v2/output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV -n $nEvents -E $energy -rad $source_rad -d $source_dist
-
-#python miniprism.py -healpix $nside $pixel -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV -n $nEvents -E $energy 
+python lamp_CLLBC.py -field $field -healpix $nside $pixel -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/cllbc_lamp/TrackSecondaries/output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV -n $nEvents -E $energy -rad $source_rad -d $source_dist
 
 cd /global/home/users/kmeehan/Repos/geant4py/lr_sims/Healpix/
 
-python processSimulationOutput.py $nside $pixel $nEvents $field $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/cllbc_lamp/geom_v2/output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/cllbc_lamp/geom_v2/processed_output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV.h5
-
-#python processSimulationOutput.py $nside $pixel $nEvents $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/mp/processed_output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5
-
+python processSimulationOutput.py $nside $pixel $nEvents $field $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/cllbc_lamp/TrackSecondaries/output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/cllbc_lamp/TrackSecondaries/processed_output_nside$(($nside))_lamp_cllbc_$(($pixel))_$((energy))keV.h5

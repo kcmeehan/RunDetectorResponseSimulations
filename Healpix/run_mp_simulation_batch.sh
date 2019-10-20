@@ -32,9 +32,9 @@ conda activate geant4py_km
 
 cd /global/home/users/kmeehan/Repos/geant4py/scripts/
 
-python miniprism.py -field $field -healpix $nside $pixel -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV -n $nEvents -E $energy 
+python miniprism.py -field $field -healpix $nside $pixel -out /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/TrackSecondaries/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV -n $nEvents -E $energy 
 
 cd /global/home/users/kmeehan/Repos/geant4py/lr_sims/Healpix/
 
-python processMpSimulationOutput.py $nside $pixel $nEvents $field $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/mp/processed_output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5
+python processMpSimulationOutput.py $nside $pixel $nEvents $field $energy $source_rad $source_dist $nDet /global/home/users/kmeehan/SCRATCH/SimulationOutput/Nside$(($nside))/mp/TrackSecondaries/output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5 /global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside$(($nside))/mp/TrackSecondaries/processed_output_nside$(($nside))_miniprism_$(($pixel))_$((energy))keV.h5
 

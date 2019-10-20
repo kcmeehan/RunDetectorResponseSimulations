@@ -13,7 +13,7 @@ source_energies=[59, 186, 356, 662, 1332]
 #source_energies=[10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500]
 nDet=192
 detector='miniprism'
-file_prefix='/global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside16/mp/processed_output_nside'+str(nside)+'_'+detector+'_'
+file_prefix='/global/home/users/kmeehan/SCRATCH/ProcessedOutput/Nside16/mp/TrackSecondaries/processed_output_nside'+str(nside)+'_'+detector+'_'
 
 for energy in source_energies:
 	# Create data containers
@@ -32,7 +32,7 @@ for energy in source_energies:
 					eta_det_err[i] = file.root.eta_per_det_err.read()
 
 	# Save final data to a single output file
-	outfile='nside16_combined_output_'+detector+'_'+str(energy)+'keV.h5'
+	outfile='nside16_withsecondaries_combined_output_'+detector+'_'+str(energy)+'keV.h5'
 	with h5py.File(outfile,"w") as outfile:
 			outfile.create_dataset("nside", data=nside)
 			outfile.create_dataset("pix", data=pix)

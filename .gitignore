@@ -3,5 +3,7 @@
 *.out
 *.task.*
 *.host*
+
+Healpix/Tasklists/*
 Angles/Tasklists/*
 Angles/finish_angles.sh

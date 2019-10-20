@@ -56,26 +56,27 @@ n_pp = len(total_energy[mask_pp])
 eta = n_pp/Fluence
 eta_err = np.sqrt(n_pp)/Fluence
 
-# obtain total event energy per detector
-groups = df.groupby(['eventID', 'detID'])
-#Esum_det0 = []
-#Esum_det1 = []
-#Esum_det2 = []
-#Esum_det3 = []
+# obtain spectra
+groups = df.groupby(['eventID', 'detID'], sort=False)
+Esum_det0 = []
+Esum_det1 = []
+Esum_det2 = []
+Esum_det3 = []
 
 for idx, (name, group) in enumerate(groups):
 	Esum = np.sum(group.E)
+	if name[1] == 0:
+			Esum_det0.append(Esum)
+	elif name[1] == 1:
+	    Esum_det1.append(Esum)
+	elif name[1] == 2:
+	    Esum_det2.append(Esum)
+	elif name[1] == 3:
+	    Esum_det3.append(Esum)
+
 	# Cut on full energy peak
 	if Esum >= energy-1:
 			det_eta[name[1]] += 1
-	#if name[1] == 0:
-	#		Esum_det0.append(Esum)
-	#elif name[1] == 1:
-	#    Esum_det1.append(Esum)
-	#elif name[1] == 2:
-	#    Esum_det2.append(Esum)
-	#elif name[1] == 3:
-	#    Esum_det3.append(Esum)
 
 det_eta = det_eta/Fluence
 
